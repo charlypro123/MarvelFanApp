@@ -1,3 +1,3 @@
 # MarvelFanApp
 
-Marvel app created to learn Git, Android and others tools
+This repository has been created with the purpose to learn Git, Android, java and others tools

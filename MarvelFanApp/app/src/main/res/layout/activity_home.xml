@@ -33,7 +33,7 @@
 
 
             <ImageView
-                android:id="@+id/image_characters"
+                android:id="@+id/iv_characters"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -48,8 +48,8 @@
                 android:id="@+id/v_feedback_overlay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/image_characters"
-                android:layout_alignTop="@id/image_characters"
+                android:layout_alignBottom="@id/iv_characters"
+                android:layout_alignTop="@id/iv_characters"
                 android:background="@drawable/button_feedback" />
 
             <TextView

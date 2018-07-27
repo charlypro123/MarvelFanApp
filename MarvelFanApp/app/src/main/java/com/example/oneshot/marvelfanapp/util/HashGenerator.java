@@ -4,10 +4,6 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/**
- * Created by Mohsen on 20/10/2016.
- */
-
 public class HashGenerator {
 
     public static String generate(long timestamp, String privateKey, String publicKey) {

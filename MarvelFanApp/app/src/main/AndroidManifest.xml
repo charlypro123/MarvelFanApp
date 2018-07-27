@@ -15,7 +15,7 @@
             android:name="privatekey"
             android:value="{$API}"
             />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".activity.HomeActivity">
             <intent-filter>

@@ -20,39 +20,52 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-
-    <RelativeLayout
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:padding="@dimen/keyLine1">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageCharacters"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="102dp"
-            android:adjustViewBounds="true"
-            android:background="@android:color/background_dark"
-            android:scaleType="centerCrop"
-            android:src="@drawable/characters"/>
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:padding="@dimen/keyLine1">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageCharacters"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:shadowColor="@color/colorPrimary"
-            android:shadowRadius="8"
-            android:text="@string/characters"
-            android:textAllCaps="true"
-            android:textColor="@color/colorAccent"
-            android:textSize="16sp"
-            android:textStyle="bold" />
 
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/image_characters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="102dp"
+                android:adjustViewBounds="true"
+                android:background="@android:color/background_dark"
+                android:scaleType="centerCrop"
+                android:src="@drawable/characters" />
 
+            <View
+                android:id="@+id/v_feedback_overlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/image_characters"
+                android:layout_alignTop="@id/image_characters"
+                android:background="@drawable/button_feedback" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/v_feedback_overlay"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:shadowColor="@color/colorPrimary"
+                android:shadowRadius="8"
+                android:text="@string/characters"
+                android:textAllCaps="true"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </android.support.v4.widget.DrawerLayout>
 </RelativeLayout>

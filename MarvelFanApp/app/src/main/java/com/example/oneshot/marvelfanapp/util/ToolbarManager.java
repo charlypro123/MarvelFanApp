@@ -26,4 +26,13 @@ public class ToolbarManager {
         this.activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
+
+    public void setupToolbarCharacter(AppCompatActivity activity, String name) {
+        this.activity = activity;
+        toolbar = (Toolbar) this.activity.findViewById(R.id.toolbarCharacter);
+        this.activity.setSupportActionBar(toolbar);
+        this.activity.getSupportActionBar().setTitle(name);
+        this.activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
 }

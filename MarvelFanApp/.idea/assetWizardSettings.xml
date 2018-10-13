@@ -5,7 +5,52 @@
       <map>
         <entry key="imageWizard">
           <value>
-            <PersistentState />
+            <PersistentState>
+              <option name="children">
+                <map>
+                  <entry key="imageAssetPanel">
+                    <value>
+                      <PersistentState>
+                        <option name="children">
+                          <map>
+                            <entry key="launcher">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="foregroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="scalingPercent" value="39" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="backgroundLayerName" value="ic_shield_icon_background" />
+                                      <entry key="foregroundImage" value="C:\Users\Oneshot\Pictures\shield_png.png" />
+                                      <entry key="foregroundLayerName" value="ic_shield_icon" />
+                                      <entry key="outputName" value="ic_shield" />
+                                      <entry key="previewDensity" value="MEDIUM" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </PersistentState>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </PersistentState>
           </value>
         </entry>
       </map>

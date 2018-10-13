@@ -41,7 +41,11 @@ public class CharactersActivity extends AppCompatActivity {
         TextView tvName = findViewById(R.id.tv_characterNameGallery);
         tvName.setText(chName);
         TextView tvDescription = findViewById(R.id.tv_characterDescription);
-        tvDescription.setText(chDescription);
+        if (chDescription != null && !"".equals(chDescription)) {
+            tvDescription.setText(chDescription);
+        } else {
+            tvDescription.setText(this.getString(R.string.info_not_available));
+        }
 
         ImageView image = findViewById(R.id.iv_imageCharacterGallery);
         Glide.with(this)

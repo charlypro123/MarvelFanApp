@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.example.oneshot.marvelfanapp.R;
+import com.example.oneshot.marvelfanapp.activity.HomeActivity;
 
 public class ToolbarManager {
     private Toolbar toolbar;
@@ -34,5 +35,9 @@ public class ToolbarManager {
         this.activity.getSupportActionBar().setTitle(name);
         this.activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    public Toolbar getToolbar() {
+        return toolbar;
     }
 }

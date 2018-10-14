@@ -9,12 +9,10 @@ import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.oneshot.marvelfanapp.MainActivity;
 import com.example.oneshot.marvelfanapp.R;
-import com.example.oneshot.marvelfanapp.util.ToolbarManager;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -59,24 +57,5 @@ public class HomeActivity extends AppCompatActivity {
         );
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
-    }
-
-    /* private void addAboutLibrariesActivity() {
-         ButtonRectangle button = (ButtonRectangle) this.findViewById(R.id.about_libraries);
-         button.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 new LibsBuilder()
-                         .withActivityTitle(HomeActivity.this.getString(R.string.app_name))
-                         .withAboutIconShown(true)
-                         .withAboutVersionShown(true)
-                         .withActivityStyle(Libs.ActivityStyle.LIGHT_DARK_TOOLBAR)
-                         .start(HomeActivity.this);
-             }
-         });
-     }*/
-    public boolean onCreateOptionMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
     }
 }

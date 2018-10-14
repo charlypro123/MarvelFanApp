@@ -83,10 +83,14 @@ public class ListCharactersAdapter extends RecyclerView.Adapter<ListCharactersAd
         }
     }
 
-    public void addListCharacters(ArrayList<Result> listaCharacters) {
-        data.addAll(listaCharacters);
+    public void addListCharacters(ArrayList<Result> listCharacters) {
+        data.addAll(listCharacters);
         notifyDataSetChanged();
     }
 
-
+    public void setFilter(ArrayList<Result> listCharacters) {
+        this.data = new ArrayList<>();
+        this.data.addAll(listCharacters);
+        notifyDataSetChanged();
+    }
 }

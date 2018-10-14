@@ -3,10 +3,13 @@ package com.example.oneshot.marvelfanapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.oneshot.marvelfanapp.adapter.ListCharactersAdapter;
@@ -29,12 +32,12 @@ import static com.example.oneshot.marvelfanapp.util.Constants.HASH;
 import static com.example.oneshot.marvelfanapp.util.Constants.PUBLIC_KEY;
 import static com.example.oneshot.marvelfanapp.util.Constants.TIMESTAMP;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private Retrofit retrofit;
     private static final String TAG = "MARVEL";
     private RecyclerView recyclerView;
     private ListCharactersAdapter listCharactersAdapter;
-
+    private ArrayList<Result> listCharacters;
     private int offset;
     private boolean readyUpdate;
 
@@ -97,9 +100,9 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<CharactersResponse> call, Response<CharactersResponse> response) {
                 readyUpdate = true;
                 if (response.isSuccessful()) {
-                    CharactersResponse charactersRespuesta = response.body();
+                    CharactersResponse charactersResponse = response.body();
 
-                    ArrayList<Result> listCharacters = charactersRespuesta.getData().getResults();
+                    listCharacters = charactersResponse.getData().getResults();
 
                     listCharactersAdapter.addListCharacters(listCharacters);
                 } else {
@@ -119,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                //TODO goto back
                 Intent intent = new Intent(this, HomeActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
@@ -129,4 +131,59 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search, menu);
+        MenuItem item = menu.findItem(R.id.item_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        searchView.setOnQueryTextListener(this);
+
+        MenuItemCompat.setOnActionExpandListener(item, new MenuItemCompat.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                listCharactersAdapter.setFilter(listCharacters);
+                return true;
+            }
+        });
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        try {
+            ArrayList<Result> filterList = filter(listCharacters, newText);
+            listCharactersAdapter.setFilter(filterList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private ArrayList<Result> filter(ArrayList<Result> results, String text) {
+        ArrayList<Result> filterList = new ArrayList<>();
+        try {
+            text = text.toLowerCase();
+            for (Result result : results) {
+                String resultString = result.getName().toLowerCase();
+
+                if (resultString.contains(text)) {
+                    filterList.add(result);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return filterList;
+    }
+
 }

@@ -3,6 +3,8 @@
     <string name="characters">Characters</string>
     <string name="info_not_available">Information not available</string>
     <string name="drawer_open">drawer_open</string>
+    <string name="menu">Menu</string>
+    <string name="home">Home</string>
     <string name="drawer_close">drawer_close</string>
     <string name="marvel_http"><a href="https://developer.marvel.com/documentation/attribution">Data provided by Marvel. © 2018 Marvel</a></string>
 </resources>

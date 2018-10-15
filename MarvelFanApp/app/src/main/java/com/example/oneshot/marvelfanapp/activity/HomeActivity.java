@@ -47,15 +47,30 @@ public class HomeActivity extends AppCompatActivity {
         final DrawerLayout drawerLayout = (DrawerLayout) this.findViewById(R.id.drawer_layout);
         Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbarHome);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Home");
+        getSupportActionBar().setTitle(R.string.home);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
                 toolbar,
                 R.string.drawer_open,
                 R.string.drawer_close
-        );
+        ){
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getSupportActionBar().setTitle(R.string.menu);
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                getSupportActionBar().setTitle(R.string.home);
+            }
+        };
+
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
     }
+
+
 }

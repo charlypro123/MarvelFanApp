@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.example.oneshot.marvelfanapp.R;
-import com.example.oneshot.marvelfanapp.activity.HomeActivity;
 
 public class ToolbarManager {
     private Toolbar toolbar;

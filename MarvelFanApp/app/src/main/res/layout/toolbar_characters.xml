@@ -12,4 +12,4 @@
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
 
 
-    tools:showIn="@layout/activity_main" />
+    tools:showIn="@layout/activity_list_characters" />

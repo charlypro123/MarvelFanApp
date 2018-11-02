@@ -2,188 +2,73 @@ package com.example.oneshot.marvelfanapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.widget.Toolbar;
+import android.text.method.LinkMovementMethod;
+import android.view.View;
+import android.widget.TextView;
 
-import com.example.oneshot.marvelfanapp.adapter.ListCharactersAdapter;
-import com.example.oneshot.marvelfanapp.activity.HomeActivity;
-import com.example.oneshot.marvelfanapp.marvelApi.MarvelApiService;
-import com.example.oneshot.marvelfanapp.models.CharactersResponse;
-import com.example.oneshot.marvelfanapp.models.Result;
-import com.example.oneshot.marvelfanapp.util.ToolbarManager;
+import com.example.oneshot.marvelfanapp.activity.ListCharactersActivity;
 
-import java.util.ArrayList;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-import static com.example.oneshot.marvelfanapp.util.Constants.BASE_URL;
-import static com.example.oneshot.marvelfanapp.util.Constants.HASH;
-import static com.example.oneshot.marvelfanapp.util.Constants.PUBLIC_KEY;
-import static com.example.oneshot.marvelfanapp.util.Constants.TIMESTAMP;
-
-public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
-    private Retrofit retrofit;
-    private static final String TAG = "MARVEL";
-    private RecyclerView recyclerView;
-    private ListCharactersAdapter listCharactersAdapter;
-    private ArrayList<Result> listCharacters;
-    private int offset;
-    private boolean readyUpdate;
-
-    private ToolbarManager toolbarManager = new ToolbarManager();
-
+public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbarManager.setupToolbarCharacters(this);
+        final TextView http = (TextView) this.findViewById(R.id.marvel_http);
+        http.setMovementMethod(LinkMovementMethod.getInstance());
 
-        final GridLayoutManager layoutManager = new GridLayoutManager(this, getResources().getInteger(R.integer.columns));
-
-        listCharactersAdapter = new ListCharactersAdapter(this);
-
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        recyclerView.setAdapter(listCharactersAdapter);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        initDrawerLayout();
+        findViewById(R.id.v_feedback_overlay).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
+            public void onClick(View view) {
+                Intent characters = new Intent(getApplicationContext(), ListCharactersActivity.class);
+                startActivity(characters);
 
-                if (dy > 0) {
-                    int visibleItemCount = layoutManager.getChildCount();
-                    int totalItemCount = layoutManager.getItemCount();
-                    int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
-
-                    if (readyUpdate) {
-                        if ((visibleItemCount + pastVisibleItems) >= totalItemCount) {
-                            Log.i(TAG, "last row");
-
-                            readyUpdate = false;
-                            offset += 20;
-                            obtainData(offset);
-                        }
-                    }
-                }
             }
         });
-
-        retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        readyUpdate = true;
-        offset = 0;
-        obtainData(offset);
-    }
-
-    private void obtainData(int offset) {
-        MarvelApiService service = retrofit.create(MarvelApiService.class);
-
-        final Call<CharactersResponse> CharactersResponseCall = service.obtainListCharacters(offset, PUBLIC_KEY, HASH, TIMESTAMP);
-
-        CharactersResponseCall.enqueue(new Callback<CharactersResponse>() {
+        findViewById(R.id.bt_characters).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<CharactersResponse> call, Response<CharactersResponse> response) {
-                readyUpdate = true;
-                if (response.isSuccessful()) {
-                    CharactersResponse charactersResponse = response.body();
+            public void onClick(View view) {
+                Intent characters = new Intent(getApplicationContext(), ListCharactersActivity.class);
+                startActivity(characters);
 
-                    listCharacters = charactersResponse.getData().getResults();
-
-                    listCharactersAdapter.addListCharacters(listCharacters);
-                } else {
-                    Log.e(TAG, "onResponse: " + response.errorBody());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CharactersResponse> call, Throwable t) {
-                readyUpdate = true;
-                Log.e(TAG, "onFailure: " + t.getMessage());
             }
         });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                Intent intent = new Intent(this, HomeActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_search, menu);
-        MenuItem item = menu.findItem(R.id.item_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-        searchView.setOnQueryTextListener(this);
-
-        MenuItemCompat.setOnActionExpandListener(item, new MenuItemCompat.OnActionExpandListener() {
+    public void initDrawerLayout() {
+        final DrawerLayout drawerLayout = (DrawerLayout) this.findViewById(R.id.drawer_layout);
+        Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbarHome);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.home);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                drawerLayout,
+                toolbar,
+                R.string.drawer_open,
+                R.string.drawer_close
+        ){
             @Override
-            public boolean onMenuItemActionExpand(MenuItem item) {
-                return true;
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getSupportActionBar().setTitle(R.string.menu);
             }
 
             @Override
-            public boolean onMenuItemActionCollapse(MenuItem item) {
-                listCharactersAdapter.setFilter(listCharacters);
-                return true;
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                getSupportActionBar().setTitle(R.string.home);
             }
-        });
-        return true;
+        };
+
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
     }
 
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        try {
-            ArrayList<Result> filterList = filter(listCharacters, newText);
-            listCharactersAdapter.setFilter(filterList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    private ArrayList<Result> filter(ArrayList<Result> results, String text) {
-        ArrayList<Result> filterList = new ArrayList<>();
-        try {
-            text = text.toLowerCase();
-            for (Result result : results) {
-                String resultString = result.getName().toLowerCase();
-
-                if (resultString.contains(text)) {
-                    filterList.add(result);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return filterList;
-    }
 
 }

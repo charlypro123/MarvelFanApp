@@ -24,6 +24,10 @@ public class ListCharactersAdapter extends RecyclerView.Adapter<ListCharactersAd
     private ArrayList<Result> data;
     private Context context;
 
+    public ArrayList<Result> getData() {
+        return data;
+    }
+
     public ListCharactersAdapter(Context context) {
         this.context = context;
         data = new ArrayList<Result>();
@@ -42,8 +46,10 @@ public class ListCharactersAdapter extends RecyclerView.Adapter<ListCharactersAd
         final Result r = data.get(position);
         viewHolder.tv_characterName.setText(r.getName());
 
+        final String imageURL = String.format("%s/%s.%s", r.getThumbnail().getPath(), "standard_xlarge", r.getThumbnail().getExtension());
+
         Glide.with(context)
-                .load(String.format("%s/%s.%s", r.getThumbnail().getPath(), "standard_xlarge", r.getThumbnail().getExtension()))
+                .load(imageURL)
                 //.centerCrop()
                 //.crossFade()
                 //.diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -53,12 +59,7 @@ public class ListCharactersAdapter extends RecyclerView.Adapter<ListCharactersAd
             @Override
             public void onClick(View view) {
                 //Toast.makeText(context, data.get(position), Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(context, CharactersActivity.class);
-                intent.putExtra("iv_imageCharacter", String.format("%s/%s.%s", r.getThumbnail().getPath(), "standard_xlarge", r.getThumbnail().getExtension()));
-                intent.putExtra("tv_characterName", viewHolder.tv_characterName.getText());
-                intent.putExtra("tv_characterDescription", r.getDescription());
-                context.startActivity(intent);
+                CharactersActivity.launch(context, r.getName(), r.getDescription(), imageURL);
             }
         });
     }

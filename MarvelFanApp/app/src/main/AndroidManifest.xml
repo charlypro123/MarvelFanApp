@@ -15,16 +15,20 @@
             android:name="privatekey"
             android:value="{$API}"
             />
-        <activity android:name=".MainActivity">
-        </activity>
-        <activity android:name=".activity.HomeActivity">
+
+        <activity android:name=".activity.SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".activity.ListCharactersActivity"></activity>
         <activity android:name=".activity.CharactersActivity"></activity>
+
     </application>
 
 </manifest>

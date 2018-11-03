@@ -29,6 +29,7 @@ An App that consumes MARVEL public API. The Marvel Comics API allows developers 
 - ConstraintLayout 1.1.2
 - Glide v4.7.1
 - Retrofit v2.1.0
+- Converter-gson v2.1.0
 - jUnit v4.12
 - Android Support Test v1.0.2
 - Espresso v3.0.2

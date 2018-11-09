@@ -15,6 +15,14 @@ An App that consumes MARVEL public API. The Marvel Comics API allows developers 
 
 ------
 
+## Features
+- List of all MARVEL characters 
+- Name based search
+- Details the selected character
+- Menu with different links
+
+------
+
 ## Development Tools
 - Android Studio v3.1.3
 - Android SDK Build Tools v27.0.3

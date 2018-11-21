@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 
-def  API ='"' + PrivateKey + '"'?: '"Error"'
+def API = '"' + PrivateKey + '"' ?: '"Error"'
 def STRING = 'String'
 android {
     compileSdkVersion 27
@@ -13,11 +13,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        each{
+        each {
             type -> type.buildConfigField STRING, 'PrivateKey', API
         }
         manifestPlaceholders = [
-                API : API
+                API: API
         ]
     }
     buildTypes {

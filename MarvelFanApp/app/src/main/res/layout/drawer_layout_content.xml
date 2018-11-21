@@ -14,6 +14,7 @@
         android:layout_alignParentTop="true"
         android:adjustViewBounds="true"
         android:gravity="center"
+        android:scaleType="centerCrop"
         android:src="@drawable/logo_marvel_studios" />
 
     <TextView

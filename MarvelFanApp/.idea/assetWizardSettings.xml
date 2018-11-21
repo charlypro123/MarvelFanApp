@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="39" />
+                                                <entry key="scalingPercent" value="67" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -33,11 +33,10 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundLayerName" value="ic_shield_icon_background" />
-                                      <entry key="foregroundImage" value="C:\Users\Oneshot\Pictures\shield_png.png" />
-                                      <entry key="foregroundLayerName" value="ic_shield_icon" />
-                                      <entry key="outputName" value="ic_shield" />
+                                      <entry key="foregroundImage" value="C:\Users\Oneshot\Pictures\shield-marvel-icon-5.jpg" />
+                                      <entry key="legacyIconShape" value="CIRCLE" />
                                       <entry key="previewDensity" value="MEDIUM" />
+                                      <entry key="webIconShape" value="CIRCLE" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -69,11 +68,6 @@
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="NOTIFICATION" />
                           </map>
                         </option>
                       </PersistentState>

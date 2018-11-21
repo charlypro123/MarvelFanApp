@@ -1,84 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <ImageView
-        android:id="@+id/background"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/backgroundp"></ImageView>
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/backgroundp"></ImageView>
 
 
-    <ImageView
-        android:id="@+id/iv_imageCharacterGallery"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_alignParentTop="true"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher" />
+        <ImageView
+            android:id="@+id/iv_imageCharacterGallery"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
 
-    <include
-        android:id="@+id/toolbarCharacter"
-        layout="@layout/toolbar_character"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <include
+            android:id="@+id/toolbarCharacter"
+            layout="@layout/toolbar_character"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/tv_characterNameGalleryTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_imageCharacterGallery"
-        android:padding="8dp"
-        android:shadowColor="@color/colorPrimaryDark"
-        android:shadowRadius="8"
-        android:text="Name"
-        android:textAllCaps="true"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_characterNameGalleryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_imageCharacterGallery"
+            android:padding="8dp"
+            android:shadowColor="@color/colorPrimaryDark"
+            android:shadowRadius="8"
+            android:text="Name"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_characterNameGallery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_characterNameGalleryTitle"
-        android:paddingLeft="8dp"
-        android:shadowColor="@color/colorPrimaryDark"
-        android:shadowRadius="8"
-        android:text="@string/app_name"
-        android:textColor="@color/colorAccent"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_characterNameGallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_characterNameGalleryTitle"
+            android:paddingLeft="8dp"
+            android:shadowColor="@color/colorPrimaryDark"
+            android:shadowRadius="8"
+            android:text="@string/app_name"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_characterDescriptionTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_characterNameGallery"
-        android:padding="8dp"
-        android:shadowColor="@color/colorPrimaryDark"
-        android:shadowRadius="8"
-        android:text="Description"
-        android:textAllCaps="true"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_characterDescriptionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_characterNameGallery"
+            android:padding="8dp"
+            android:shadowColor="@color/colorPrimaryDark"
+            android:shadowRadius="8"
+            android:text="Description"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_characterDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_characterDescriptionTitle"
-        android:paddingLeft="8dp"
-        android:shadowColor="@color/colorPrimaryDark"
-        android:shadowRadius="8"
-        android:text="@string/info_not_available"
-        android:textColor="@color/colorAccent"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_characterDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_characterDescriptionTitle"
+            android:paddingLeft="8dp"
+            android:shadowColor="@color/colorPrimaryDark"
+            android:shadowRadius="8"
+            android:text="@string/info_not_available"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

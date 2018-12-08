@@ -10,14 +10,6 @@ public class ToolbarManager {
     private AppCompatActivity activity;
 
 
-    public void setupToolbarHome(AppCompatActivity activity) {
-        this.activity = activity;
-        toolbar = (Toolbar) this.activity.findViewById(R.id.toolbarHome);
-        this.activity.setSupportActionBar(toolbar);
-        this.activity.getSupportActionBar().setTitle("Home");
-
-    }
-
     public void setupToolbarCharacters(AppCompatActivity activity) {
         this.activity = activity;
         toolbar = (Toolbar) this.activity.findViewById(R.id.toolbarCharacters);

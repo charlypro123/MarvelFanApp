@@ -147,7 +147,7 @@ public class ListCharactersActivity extends AppCompatActivity implements SearchV
             public boolean onMenuItemActionCollapse(MenuItem item) {
                 //listCharactersAdapter.getData();
                 //listCharactersAdapter.setFilter(listCharacters);
-                //TODO mirar que vols fer quan tanquis la busqueda
+                //TODO mirar que hacer al cerrar busqueda
                 return true;
             }
         });
